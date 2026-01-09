@@ -20,9 +20,20 @@ export default function FeaturedProject() {
                     <span className="inline-block px-4 py-1.5 bg-blue-50 text-[#1E40AF] text-sm font-medium rounded-full mb-4">
                         {t('badge')}
                     </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E293B] mb-3">
                         {t('title')}
                     </h2>
+                    <p className="text-xl md:text-2xl font-semibold text-[#1E40AF] mb-4">
+                        — {t('subtitle')}
+                    </p>
+                    <div className="flex items-center justify-center gap-3 mb-6">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full border border-green-100">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                            {t('accuracyBadge')}
+                        </span>
+                    </div>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         {t('description')}
                     </p>

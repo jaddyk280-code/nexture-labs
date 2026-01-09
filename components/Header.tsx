@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
 
 export default function Header() {
     const t = useTranslations('Header');
@@ -38,7 +37,10 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <nav className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-3">
+                    <button
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        className="flex items-center gap-3 cursor-pointer"
+                    >
                         <Image
                             src="/logo.png"
                             alt="Nexture Labs"
@@ -47,7 +49,7 @@ export default function Header() {
                             className="h-8 w-auto"
                             priority
                         />
-                    </Link>
+                    </button>
 
                     {/* Navigation */}
                     <div className="hidden md:flex items-center gap-8">
