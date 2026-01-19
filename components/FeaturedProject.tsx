@@ -40,13 +40,19 @@ export default function FeaturedProject() {
                 </motion.div>
 
                 {/* Problem - Solution - Impact */}
-                <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="grid lg:grid-cols-3 gap-8 lg:gap-12"
+                >
                     {/* Problem */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.6, delay: 0 }}
                         className="relative bg-[#F9FAFB] rounded-3xl p-8 lg:p-10"
                     >
                         <div className="absolute -top-4 left-8 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
@@ -163,7 +169,7 @@ export default function FeaturedProject() {
                             </div>
                         </div>
                     </motion.div>
-                </div>
+                </motion.div>
 
                 {/* App Screenshots */}
                 <motion.div

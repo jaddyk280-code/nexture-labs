@@ -26,13 +26,15 @@ export default function Footer() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                         >
-                            <Image
-                                src="/logo.svg"
-                                alt="Nexture Labs"
-                                width={160}
-                                height={36}
-                                className="h-8 w-auto brightness-0 invert mb-6"
-                            />
+                            <div className="mb-6">
+                                <Image
+                                    src="/logo.png"
+                                    alt="Nexture Labs"
+                                    width={180}
+                                    height={40}
+                                    className="h-8 w-auto"
+                                />
+                            </div>
                             <p className="text-gray-400 max-w-sm mb-6">
                                 {t('tagline')}
                             </p>
