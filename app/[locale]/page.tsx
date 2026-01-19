@@ -20,13 +20,23 @@ export default async function Home({ params }: Props) {
 
     return (
         <main className="min-h-screen">
-            <Header />
-            <Hero />
-            <SocialProof />
-            <FeaturedProject />
-            <Services />
-            <Philosophy />
-            <Contact />
+            {/* Grid pattern background - applies to all sections except Footer */}
+            <div className="relative">
+                <div
+                    className="absolute inset-0 opacity-[0.1] pointer-events-none"
+                    style={{
+                        backgroundImage: `linear-gradient(#5D3FD3 1px, transparent 1px), linear-gradient(90deg, #5D3FD3 1px, transparent 1px)`,
+                        backgroundSize: '60px 60px'
+                    }}
+                />
+                <Header />
+                <Hero />
+                <SocialProof />
+                <FeaturedProject />
+                <Services />
+                <Philosophy />
+                <Contact />
+            </div>
             <Footer />
         </main>
     );

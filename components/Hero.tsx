@@ -13,7 +13,7 @@ export default function Hero() {
 
             {/* Grid pattern overlay */}
             <div
-                className="absolute inset-0 opacity-[0.03]"
+                className="absolute inset-0 opacity-[0.1]"
                 style={{
                     backgroundImage: `linear-gradient(#5D3FD3 1px, transparent 1px), linear-gradient(90deg, #5D3FD3 1px, transparent 1px)`,
                     backgroundSize: '60px 60px'

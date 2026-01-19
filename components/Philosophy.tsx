@@ -66,7 +66,7 @@ export default function Philosophy() {
                     >
                         {/* Quote marks */}
                         <svg
-                            className="absolute -top-8 -left-4 w-16 h-16 text-indigo-100"
+                            className="absolute -top-12 -left-4 w-16 h-16 text-indigo-100"
                             fill="currentColor"
                             viewBox="0 0 32 32"
                         >
