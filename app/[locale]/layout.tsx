@@ -33,7 +33,13 @@ export default async function LocaleLayout({
     setRequestLocale(locale);
 
     // Providing all messages to the client
-    const messages = await getMessages();
+    let messages;
+    try {
+        messages = await getMessages();
+    } catch (error) {
+        console.error('Error loading messages:', error);
+        messages = {};
+    }
 
     return (
         <html lang={locale}>
