@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
+import ClientLayout from '@/components/ClientLayout';
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -50,7 +51,9 @@ export default async function LocaleLayout({
             </head>
             <body className="antialiased">
                 <NextIntlClientProvider messages={messages}>
-                    {children}
+                    <ClientLayout>
+                        {children}
+                    </ClientLayout>
                 </NextIntlClientProvider>
             </body>
         </html>
