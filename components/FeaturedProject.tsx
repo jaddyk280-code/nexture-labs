@@ -4,252 +4,83 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 export default function FeaturedProject() {
-    const t = useTranslations('FeaturedProject');
+    const t = useTranslations('Projects');
+
+    const benefits = [
+        {
+            key: 'benefit1',
+            icon: (
+                <svg className="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+            )
+        },
+        {
+            key: 'benefit2',
+            icon: (
+                <svg className="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+            )
+        },
+        {
+            key: 'benefit3',
+            icon: (
+                <svg className="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+            )
+        }
+    ];
 
     return (
-        <section id="work" className="py-24 lg:py-32 bg-white">
+        <section id="work" className="py-24 bg-gray-50">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <span className="inline-block px-4 py-1.5 bg-indigo-50 text-[#5D3FD3] text-sm font-medium rounded-full mb-4">
-                        {t('badge')}
-                    </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E293B] mb-3">
+                <div className="text-center mb-16">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4"
+                    >
                         {t('title')}
-                    </h2>
-                    <p className="text-xl md:text-2xl font-semibold text-[#5D3FD3] mb-4">
-                        — {t('subtitle')}
-                    </p>
-                    <div className="flex items-center justify-center gap-3 mb-6">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full border border-green-100">
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                            {t('accuracyBadge')}
-                        </span>
-                    </div>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        {t('description')}
-                    </p>
-                </motion.div>
-
-                {/* Problem - Solution - Impact */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="grid lg:grid-cols-3 gap-8 lg:gap-12"
-                >
-                    {/* Problem */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0 }}
-                        className="relative bg-[#F9FAFB] rounded-3xl p-8 lg:p-10"
+                        transition={{ delay: 0.1 }}
+                        className="text-lg text-gray-600"
                     >
-                        <div className="absolute -top-4 left-8 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                            <span className="text-red-600 font-bold text-sm">1</span>
-                        </div>
-                        <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-3">
-                            {t('problemBadge')}
-                        </h3>
-                        <h4 className="text-xl font-bold text-gray-900 mb-4">
-                            {t('problemTitle')}
-                        </h4>
-                        <p className="text-gray-600 mb-6">
-                            {t('problemDescription')}
-                        </p>
-                        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center">
-                                    <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="text-2xl font-bold text-gray-900">75%</p>
-                                    <p className="text-sm text-gray-500">{t('fearStat')}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
+                        {t('subtitle')}
+                    </motion.p>
+                </div>
 
-                    {/* Solution */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="relative bg-gradient-to-br from-[#5D3FD3] to-[#6366F1] rounded-3xl p-8 lg:p-10 text-white"
-                    >
-                        <div className="absolute -top-4 left-8 w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                            <span className="text-[#5D3FD3] font-bold text-sm">2</span>
-                        </div>
-                        <h3 className="text-sm font-semibold text-indigo-200 uppercase tracking-wider mb-3">
-                            {t('solutionBadge')}
-                        </h3>
-                        <h4 className="text-xl font-bold mb-4">
-                            {t('solutionTitle')}
-                        </h4>
-                        <p className="text-indigo-100 mb-6">
-                            {t('solutionDescription')}
-                        </p>
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <span className="text-sm">{t('feature1')}</span>
+                {/* Benefits Grid (Quora Card Style) */}
+                <div className="grid md:grid-cols-3 gap-8">
+                    {benefits.map((item, index) => (
+                        <motion.div
+                            key={item.key}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.1)" }}
+                            className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col items-start h-full"
+                        >
+                            <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-6">
+                                {item.icon}
                             </div>
-                            <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <span className="text-sm">{t('feature2')}</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <span className="text-sm">{t('feature3')}</span>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Impact */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="relative bg-[#F9FAFB] rounded-3xl p-8 lg:p-10"
-                    >
-                        <div className="absolute -top-4 left-8 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                            <span className="text-green-600 font-bold text-sm">3</span>
-                        </div>
-                        <h3 className="text-sm font-semibold text-green-600 uppercase tracking-wider mb-3">
-                            {t('impactBadge')}
-                        </h3>
-                        <h4 className="text-xl font-bold text-gray-900 mb-4">
-                            {t('impactTitle')}
-                        </h4>
-                        <p className="text-gray-600 mb-6">
-                            {t('impactDescription')}
-                        </p>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
-                                <p className="text-2xl font-bold text-[#5D3FD3]">87%</p>
-                                <p className="text-xs text-gray-500">{t('avgImprovement')}</p>
-                            </div>
-                            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
-                                <p className="text-2xl font-bold text-[#5D3FD3]">{t('weeks')}</p>
-                                <p className="text-xs text-gray-500">{t('toSeeResults')}</p>
-                            </div>
-                            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
-                                <p className="text-2xl font-bold text-[#5D3FD3]">10K+</p>
-                                <p className="text-xs text-gray-500">{t('activeUsers')}</p>
-                            </div>
-                            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
-                                <p className="text-2xl font-bold text-[#5D3FD3]">4.8★</p>
-                                <p className="text-xs text-gray-500">{t('appRating')}</p>
-                            </div>
-                        </div>
-                    </motion.div>
-                </motion.div>
-
-                {/* App Screenshots */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    className="mt-20"
-                >
-                    <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 lg:p-16 overflow-hidden">
-                        {/* Decorative elements */}
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-50/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-                        <div className="relative flex flex-col md:flex-row items-center justify-center gap-8">
-                            {/* Screen 1 */}
-                            <div className="w-[200px] bg-gray-900 rounded-[2rem] p-2 shadow-2xl">
-                                <div className="bg-white rounded-[1.5rem] overflow-hidden">
-                                    <div className="bg-[#5D3FD3] px-4 py-6 text-center">
-                                        <p className="text-white text-xs font-medium">{t('dailyPractice')}</p>
-                                        <p className="text-white text-3xl font-bold mt-1">24:35</p>
-                                        <p className="text-indigo-200 text-xs mt-1">{t('totalTimeToday')}</p>
-                                    </div>
-                                    <div className="p-4 space-y-3">
-                                        <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
-                                            <div className="h-full w-[85%] bg-gradient-to-r from-[#5D3FD3] to-[#6366F1] rounded-full" />
-                                        </div>
-                                        <p className="text-xs text-gray-500 text-center">{t('dailyGoal')}: 85%</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Screen 2 - Main */}
-                            <div className="w-[240px] bg-gray-900 rounded-[2.5rem] p-2.5 shadow-2xl -mt-8 md:mt-0 z-10">
-                                <div className="bg-white rounded-[2rem] overflow-hidden">
-                                    <div className="px-5 py-6">
-                                        <div className="flex items-center justify-between mb-6">
-                                            <div>
-                                                <p className="text-gray-500 text-xs">{t('welcomeBack')}</p>
-                                                <p className="text-gray-900 font-semibold">John</p>
-                                            </div>
-                                            <div className="w-10 h-10 bg-gray-100 rounded-full" />
-                                        </div>
-                                        <div className="bg-gradient-to-br from-[#5D3FD3] to-[#6366F1] rounded-2xl p-5 text-white mb-5">
-                                            <p className="text-indigo-200 text-xs mb-1">{t('overallScore')}</p>
-                                            <p className="text-4xl font-bold">87<span className="text-lg">/100</span></p>
-                                        </div>
-                                        <div className="grid grid-cols-2 gap-3">
-                                            <div className="bg-gray-50 rounded-xl p-3 text-center">
-                                                <p className="text-lg font-bold text-gray-900">92%</p>
-                                                <p className="text-xs text-gray-500">{t('clarity')}</p>
-                                            </div>
-                                            <div className="bg-gray-50 rounded-xl p-3 text-center">
-                                                <p className="text-lg font-bold text-gray-900">85%</p>
-                                                <p className="text-xs text-gray-500">{t('pace')}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Screen 3 */}
-                            <div className="w-[200px] bg-gray-900 rounded-[2rem] p-2 shadow-2xl">
-                                <div className="bg-white rounded-[1.5rem] overflow-hidden">
-                                    <div className="px-4 py-4">
-                                        <p className="text-gray-900 font-semibold text-sm mb-3">{t('recentSessions')}</p>
-                                        <div className="space-y-2">
-                                            {[92, 87, 85, 88].map((score, i) => (
-                                                <div key={i} className="flex items-center justify-between bg-gray-50 rounded-xl px-3 py-2">
-                                                    <span className="text-xs text-gray-500">{t('session')} {4 - i}</span>
-                                                    <span className="text-sm font-semibold text-[#5D3FD3]">{score}%</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-3">
+                                {t(`${item.key}.title`)}
+                            </h3>
+                            <p className="text-gray-500 leading-relaxed">
+                                {t(`${item.key}.desc`)}
+                            </p>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </section>
     );
