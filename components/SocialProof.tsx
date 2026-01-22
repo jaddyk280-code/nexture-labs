@@ -16,14 +16,14 @@ export default function SocialProof() {
     ];
 
     return (
-        <section className="py-20 bg-[#F9FAFB]">
+        <section className="py-8 bg-[#F9FAFB]">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
+                    className="text-center mb-4"
                 >
                     <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
                         {t('title')}

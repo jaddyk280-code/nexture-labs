@@ -2,9 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 
 export default function FeaturedProject() {
     const t = useTranslations('Projects');
+    const tHero = useTranslations('Hero');
+    const router = useRouter();
 
     const benefits = [
         {
@@ -36,8 +39,72 @@ export default function FeaturedProject() {
     return (
         <section id="work" className="py-24 bg-gray-50">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                {/* Hero Content (merged from Hero section) */}
+                <div className="text-center mb-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="max-w-3xl mx-auto"
+                    >
+                        <h2 className="text-4xl md:text-6xl lg:text-8xl font-black text-gray-900 tracking-tight leading-[1.1] mb-8 break-keep relative inline-block">
+                            Speech <span className="relative inline-block">
+                                Up
+                                <span className="absolute -top-4 -right-4 md:-top-6 md:-right-6 lg:-top-8 lg:-right-8 text-xs md:text-sm lg:text-base font-bold text-white bg-indigo-600 px-2 py-1 md:px-2.5 md:py-1.5 lg:px-3 lg:py-2 rounded-lg shadow-lg transform rotate-12 whitespace-nowrap tracking-wide">
+                                    앱 출시
+                                </span>
+                            </span>
+                        </h2>
+                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-[1.1] mb-8 break-keep">
+                            {tHero('headline')}
+                        </h1>
+                        <p className="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed font-medium max-w-lg mx-auto">
+                            {(() => {
+                                const subtext = tHero('subtext');
+                                const parts = subtext.split('스피치를');
+                                if (parts.length === 2) {
+                                    return (
+                                        <>
+                                            {parts[0]}
+                                            <span className="whitespace-nowrap">스피치를</span>
+                                            {parts[1]}
+                                        </>
+                                    );
+                                }
+                                return subtext;
+                            })()}
+                        </p>
+
+                        <div className="flex flex-wrap gap-4 justify-center mb-12">
+                            <motion.a
+                                href="/demo"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    router.push('/demo');
+                                }}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="inline-flex items-center justify-center px-8 py-4 bg-gray-50 text-gray-900 text-lg font-bold rounded-xl border border-gray-200 hover:bg-gray-100 transition-all"
+                            >
+                                {tHero('ctaSecondary')}
+                            </motion.a>
+                            <motion.a
+                                href="https://play.google.com/store/apps/details?id=com.speechup.app"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="inline-flex items-center justify-center px-8 py-4 bg-indigo-600 text-white text-lg font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition-all"
+                            >
+                                {tHero('ctaPrimary')}
+                            </motion.a>
+                        </div>
+                    </motion.div>
+                </div>
+
                 {/* Section Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-12">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

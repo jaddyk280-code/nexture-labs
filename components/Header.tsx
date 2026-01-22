@@ -43,11 +43,45 @@ export default function Header() {
     };
 
     const navItems = [
-        { label: t('services'), href: '#services' },
         { label: t('work'), href: '#work' },
+        { label: t('services'), href: '#services' },
         { label: t('philosophy'), href: '#philosophy' },
         { label: t('contact'), href: '#contact' },
     ];
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        const targetId = href.replace('#', '');
+        
+        // 데모 페이지에서 클릭한 경우 메인 페이지로 이동
+        if (pathname === '/demo' || pathname === '/en/demo') {
+            router.push(`/${href}`);
+            // 페이지 이동 후 스크롤을 위해 약간의 지연
+            setTimeout(() => {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const headerHeight = 80;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        } else {
+            // 메인 페이지에서 클릭한 경우
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                const headerHeight = 80; // 헤더 높이 (h-20 = 80px)
+                const targetPosition = targetElement.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    };
 
     return (
         <motion.header
@@ -63,7 +97,13 @@ export default function Header() {
                 <nav className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <button
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        onClick={() => {
+                            if (pathname === '/demo' || pathname === '/en/demo') {
+                                router.push('/');
+                            } else {
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        }}
                         className="flex items-center gap-3 cursor-pointer"
                     >
                         <Image
@@ -82,6 +122,7 @@ export default function Header() {
                             <a
                                 key={item.label}
                                 href={item.href}
+                                onClick={(e) => handleNavClick(e, item.href)}
                                 className="text-[0.91875rem] font-medium text-gray-600 hover:text-gray-900 transition-colors duration-200"
                             >
                                 {item.label}
@@ -103,6 +144,7 @@ export default function Header() {
                         {/* CTA Button */}
                         <motion.a
                             href="#contact"
+                            onClick={(e) => handleNavClick(e, '#contact')}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className="inline-flex items-center px-5 py-2.5 bg-[#5D3FD3] text-white text-sm font-medium rounded-full hover:bg-[#4C1D95] transition-colors duration-200"

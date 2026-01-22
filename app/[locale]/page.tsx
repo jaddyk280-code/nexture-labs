@@ -31,7 +31,6 @@ export default async function Home({ params }: Props) {
                 />
                 <Header />
                 <Hero />
-                <SocialProof />
                 <FeaturedProject />
                 <Services />
                 <Philosophy />
