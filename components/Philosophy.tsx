@@ -11,7 +11,7 @@ export default function Philosophy() {
             title: t('transparencyTitle'),
             description: t('transparencyDescription'),
             icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
@@ -21,7 +21,7 @@ export default function Philosophy() {
             title: t('qualityTitle'),
             description: t('qualityDescription'),
             icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                 </svg>
             ),
@@ -30,7 +30,7 @@ export default function Philosophy() {
             title: t('partnershipTitle'),
             description: t('partnershipDescription'),
             icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
             ),
@@ -38,7 +38,7 @@ export default function Philosophy() {
     ];
 
     return (
-        <section id="philosophy" className="py-24 lg:py-32 bg-white relative overflow-hidden">
+        <section id="philosophy" className="py-12 lg:py-16 bg-white relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-[800px] h-[800px] bg-gradient-to-r from-indigo-50 to-purple-50 rounded-full blur-3xl opacity-50" />
@@ -104,13 +104,13 @@ export default function Philosophy() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                                className="bg-[#F9FAFB] rounded-2xl p-6 text-center"
+                                className="group bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-xl hover:border-indigo-100 transition-all duration-500"
                             >
-                                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-100 text-[#5D3FD3]">
+                                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-100 text-[#5D3FD3]">
                                     {value.icon}
                                 </div>
-                                <h3 className="text-lg font-semibold text-gray-900 mb-2">{value.title}</h3>
-                                <p className="text-gray-600 text-sm">{value.description}</p>
+                                <h3 className="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
+                                <p className="text-gray-600 text-base">{value.description}</p>
                             </motion.div>
                         ))}
                     </motion.div>

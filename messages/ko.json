@@ -13,7 +13,7 @@
         "tagline": "Web App Development Agency",
         "poweredBy": "최고의 기술로 구동됩니다",
         "headline": "발표 불안, 인구의 75%가 겪는 문제입니다",
-        "subtext": "비싼 학원비, 타인의 시선, 부족한 연습 시간. Speech Up과 함께라면 혼자서도 완벽하게 스피치를 마스터할 수 있습니다.",
+        "subtext": "비싼 학원비, 타인의 시선, 부족한 연습 시간 Speech Up과 함께라면 혼자서도 완벽하게 스피치를 마스터할 수 있습니다",
         "ctaPrimary": "앱 체험하기",
         "ctaSecondary": "데모 보기",
         "trust": "매일 성장하는 1,000+명의 사용자"
@@ -84,20 +84,22 @@
     },
     "Services": {
         "badge": "핵심 역량",
-        "title": "우리가 하는 일",
-        "description": "차별화를 만드는 AI 기반 제품 개발을 전문으로 합니다.",
-        "aiProductTitle": "AI 제품 설계",
-        "aiProductDescription": "단순한 기술 연결을 넘어 사용자 경험에 최적화된 AI 워크플로우를 설계합니다.",
-        "aiProductTag1": "UX 리서치",
-        "aiProductTag2": "프로토타이핑",
-        "aiProductTag3": "UI 디자인",
-        "aiProductTag4": "AI 통합",
+        "title": "우리가 하는 일 (What We Do)",
+        "description": "업무와 생활에 효율을 높이는 웹 앱 개발 및 AI 기반 프로그램 개발을 전문으로 합니다",
+        "aiProductTitle": "웹 앱 및 AI 기반 프로그램 개발",
+        "aiProductDescription": "최적화된 AI 워크플로우를 통해 업무와 일상의 복잡한 문제를 실질적인 솔루션으로 해결합니다",
+        "aiProductTag1": "기획 및 분석",
+        "aiProductTag2": "아키텍처 설계",
+        "aiProductTag3": "프로토타이핑",
+        "aiProductTag4": "프론트 및 백엔드 개발",
+        "aiProductTag5": "테스트 및 QA",
+        "aiProductTag6": "배포",
         "mobileTitle": "모바일 엔지니어링",
         "mobileDescription": "iOS와 Android 모두에서 매끄럽고 견고한 고성능 앱 경험을 제공합니다.",
         "mobileTag1": "iOS",
         "mobileTag2": "Android",
         "mobileTag3": "React Native",
-        "infraTitle": "확장 가능한 구조",
+        "infraTitle": "클라우드 기반 인프라 구축",
         "infraDescription": "서비스의 성장에 유연하게 대응하는 클라우드 기반의 안정적인 인프라를 구축합니다.",
         "infraTag1": "Firebase",
         "infraTag2": "AWS",
@@ -138,7 +140,7 @@
         "messageLabel": "프로젝트에 대해 알려주세요",
         "messagePlaceholder": "도움이 필요한 부분은...",
         "submit": "프로젝트 문의하기",
-        "responseTime": "24시간 내 답변드리겠습니다."
+        "responseTime": "빠른 시간내에 답변 드리겠습니다"
     },
     "Demo": {
         "title": "Speech Up: 나만의 AI 스피치 코치",
@@ -196,7 +198,7 @@
         "ctaButton": "앱 체험 해보기"
     },
     "Footer": {
-        "tagline": "기술로 사람의 가능성을 확장합니다. 차별화를 만드는 AI 기반 솔루션을 구축합니다.",
+        "tagline": "기술로 사람의 가능성을 확장합니다",
         "company": "회사",
         "about": "소개",
         "careers": "채용",

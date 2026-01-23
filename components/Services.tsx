@@ -7,7 +7,7 @@ export default function Services() {
     const t = useTranslations('Services');
 
     return (
-        <section id="services" className="py-24 lg:py-32 bg-[#F9FAFB]">
+        <section id="services" className="py-12 lg:py-16 bg-[#F9FAFB]">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
@@ -23,7 +23,7 @@ export default function Services() {
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                         {t('title')}
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto whitespace-nowrap">
                         {t('description')}
                     </p>
                 </motion.div>
@@ -52,11 +52,23 @@ export default function Services() {
                                 {t('aiProductTitle')}
                             </h3>
                             <p className="text-gray-600 mb-6 max-w-xl">
-                                {t('aiProductDescription')}
+                                {(() => {
+                                    const desc = t('aiProductDescription');
+                                    const parts = desc.split('복잡한 문제를');
+                                    if (parts.length === 2) {
+                                        return (
+                                            <>
+                                                {parts[0]}복잡한 문제를<br />
+                                                {parts[1]}
+                                            </>
+                                        );
+                                    }
+                                    return desc;
+                                })()}
                             </p>
 
                             <div className="flex flex-wrap gap-3">
-                                {[t('aiProductTag1'), t('aiProductTag2'), t('aiProductTag3'), t('aiProductTag4')].map((tag) => (
+                                {[t('aiProductTag1'), t('aiProductTag2'), t('aiProductTag3'), t('aiProductTag4'), t('aiProductTag5')].map((tag) => (
                                     <span key={tag} className="px-4 py-2 bg-gray-50 text-gray-600 text-sm rounded-full border border-gray-100">
                                         {tag}
                                     </span>
@@ -80,7 +92,7 @@ export default function Services() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="group relative bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:border-indigo-100 transition-all duration-500 overflow-hidden"
+                        className="group relative bg-white rounded-3xl p-8 lg:p-10 shadow-sm border border-gray-100 hover:shadow-xl hover:border-indigo-100 transition-all duration-500 overflow-hidden"
                     >
                         <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-purple-50 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-y-1/2 translate-x-1/2" />
 
@@ -91,7 +103,7 @@ export default function Services() {
                                 </svg>
                             </div>
 
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-3">
                                 {t('mobileTitle')}
                             </h3>
                             <p className="text-gray-600 mb-6">
@@ -114,7 +126,7 @@ export default function Services() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="group relative bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:border-indigo-100 transition-all duration-500 overflow-hidden"
+                        className="group relative bg-white rounded-3xl p-8 lg:p-10 shadow-sm border border-gray-100 hover:shadow-xl hover:border-indigo-100 transition-all duration-500 overflow-hidden"
                     >
                         <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-emerald-50 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-y-1/2 translate-x-1/2" />
 
@@ -125,7 +137,7 @@ export default function Services() {
                                 </svg>
                             </div>
 
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-3">
                                 {t('infraTitle')}
                             </h3>
                             <p className="text-gray-600 mb-6">

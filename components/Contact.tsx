@@ -20,7 +20,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-24 lg:py-32 bg-[#F9FAFB]">
+        <section id="contact" className="py-12 lg:py-16 bg-[#F9FAFB]">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
                     {/* Left side - Text content */}
@@ -33,7 +33,7 @@ export default function Contact() {
                         <span className="inline-block px-4 py-1.5 bg-indigo-50 text-[#5D3FD3] text-sm font-medium rounded-full mb-6">
                             {t('badge')}
                         </span>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-relaxed">
                             {t('title1')}{' '}
                             <span className="text-[#5D3FD3]">{t('title2')}</span>
                         </h2>
@@ -51,8 +51,8 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-sm text-gray-500">{t('emailLabel')}</p>
-                                    <a href="mailto:hello@nexturelabs.com" className="text-gray-900 font-medium hover:text-[#5D3FD3] transition-colors">
-                                        hello@nexturelabs.com
+                                    <a href="mailto:jaddyk280@gmail.com" className="text-gray-900 font-medium hover:text-[#5D3FD3] transition-colors">
+                                        jaddyk280@gmail.com
                                     </a>
                                 </div>
                             </div>

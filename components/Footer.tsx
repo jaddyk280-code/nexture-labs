@@ -8,15 +8,9 @@ export default function Footer() {
     const t = useTranslations('Footer');
     const currentYear = new Date().getFullYear();
 
-    const footerLinks = {
-        [t('company')]: [t('about'), t('careers'), t('press')],
-        [t('services')]: [t('aiProducts'), t('mobileApps'), t('consulting')],
-        [t('resources')]: [t('blog'), t('caseStudies'), t('documentation')],
-    };
-
     return (
         <footer className="bg-gray-900 text-white">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
                 <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
                     {/* Brand */}
                     <div className="lg:col-span-2">
@@ -66,27 +60,21 @@ export default function Footer() {
                         </motion.div>
                     </div>
 
-                    {/* Links */}
-                    {Object.entries(footerLinks).map(([category, links], index) => (
+                    {/* Company Info */}
+                    <div className="lg:col-span-3">
                         <motion.div
-                            key={category}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.1 * (index + 1) }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
                         >
-                            <h3 className="font-semibold text-white mb-4">{category}</h3>
-                            <ul className="space-y-3">
-                                {links.map((link) => (
-                                    <li key={link}>
-                                        <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                                            {link}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
+                            <h3 className="font-semibold text-white mb-4">Company Info</h3>
+                            <div className="space-y-2 text-gray-400">
+                                <p>VERDE : 255-17-02659</p>
+                                <p>68, Yeonbuk-ro, Jeju-si, Jeju-do, Republic of Korea</p>
+                            </div>
                         </motion.div>
-                    ))}
+                    </div>
                 </div>
 
                 {/* Bottom */}
@@ -95,7 +83,7 @@ export default function Footer() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="mt-16 pt-8 border-t border-gray-800"
+                    className="mt-8 pt-6 border-t border-gray-800"
                 >
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <p className="text-sm text-gray-400">

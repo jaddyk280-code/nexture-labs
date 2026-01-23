@@ -93,7 +93,7 @@ export default function Hero() {
     }
 
     return (
-        <section className="relative h-screen w-full bg-white overflow-hidden flex items-center justify-center">
+        <section className="relative h-screen w-full bg-white overflow-hidden flex items-start justify-center pt-[calc(5rem+5.172rem)] md:pt-[calc(5rem+8.618rem)] lg:pt-[calc(5rem+10.342rem)]">
             {/* Vanta.js 애니메이션이 표시될 컨테이너 */}
             <div 
                 id="vanta-bg" 
@@ -111,7 +111,15 @@ export default function Hero() {
                     className="space-y-[72px]"
                 >
                     {/* 큰제목 */}
-                    <h1 className="text-[3.192rem] md:text-[5.32rem] lg:text-[6.384rem] font-black text-gray-900 tracking-tight leading-[1.3]">
+                    <motion.h1 
+                        initial={{ opacity: 0, scale: 1 }}
+                        animate={{ opacity: 1, scale: 1.2 }}
+                        transition={{ 
+                            opacity: { duration: 1.5, delay: 0.5 },
+                            scale: { duration: 2.4, delay: 2 }
+                        }}
+                        className="text-[2.586rem] md:text-[4.309rem] lg:text-[5.171rem] font-black text-gray-900 tracking-tight leading-[1.3]"
+                    >
                         {(() => {
                             const title = t('title');
                             // 한국어인 경우 "확장합니다"에서 줄바꿈
@@ -142,39 +150,61 @@ export default function Hero() {
                             }
                             return title;
                         })()}
-                    </h1>
+                    </motion.h1>
                     
                     {/* 중제목 */}
-                    <h2 className="text-[2.128rem] md:text-[3.192rem] lg:text-[4.256rem] font-bold text-indigo-600 tracking-tight">
+                    <motion.h2 
+                        initial={{ opacity: 0, scale: 1 }}
+                        animate={{ opacity: 1, scale: 1.2 }}
+                        transition={{ 
+                            opacity: { duration: 1.5, delay: 0.5 },
+                            scale: { duration: 2.4, delay: 2 }
+                        }}
+                        className="text-[2.128rem] md:text-[3.192rem] lg:text-[4.256rem] font-bold text-indigo-600 tracking-tight"
+                    >
                         {t('subtitle')}
-                    </h2>
+                    </motion.h2>
                     
                     {/* 소제목 */}
                     <div className="space-y-2 max-w-3xl mx-auto">
-                        <p className="text-[1.064rem] md:text-[2.128rem] lg:text-[2.128rem] text-gray-700 font-medium leading-relaxed whitespace-nowrap">
+                        <motion.p 
+                            initial={{ opacity: 0, scale: 1 }}
+                            animate={{ opacity: 1, scale: 1.2 }}
+                            transition={{ 
+                                opacity: { duration: 1.5, delay: 0.5 },
+                                scale: { duration: 2.4, delay: 2 }
+                            }}
+                            className="text-[1.064rem] md:text-[2.128rem] lg:text-[2.128rem] text-gray-700 font-medium leading-relaxed whitespace-nowrap"
+                        >
                             {t('description')} - Nexture Labs
-                        </p>
-                        <p className="text-[1.064rem] md:text-[2.128rem] lg:text-[2.128rem] text-gray-700 font-medium leading-relaxed whitespace-nowrap">
+                        </motion.p>
+                        <motion.p 
+                            initial={{ opacity: 0, scale: 1 }}
+                            animate={{ opacity: 1, scale: 1.2 }}
+                            transition={{ 
+                                opacity: { duration: 1.5, delay: 0.5 },
+                                scale: { duration: 2.4, delay: 2 }
+                            }}
+                            className="text-[1.064rem] md:text-[2.128rem] lg:text-[2.128rem] text-gray-700 font-medium leading-relaxed whitespace-nowrap"
+                        >
                             {t('tagline')}
-                        </p>
+                        </motion.p>
                     </div>
 
                     {/* SocialProof - 기술 스택 */}
                     <div className="mt-12 space-y-4">
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
                             className="text-sm font-medium text-gray-500 uppercase tracking-wider"
                         >
                             {t('poweredBy')}
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 0.7 }}
                             className="flex flex-wrap items-center justify-center gap-6 md:gap-12"
                         >
                             {[
@@ -189,9 +219,8 @@ export default function Hero() {
                                 <motion.div
                                     key={tech.name}
                                     initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
                                     className="flex items-center gap-2 group"
                                 >
                                     <div className="w-8 h-8 flex items-center justify-center text-gray-400 group-hover:text-gray-600 transition-colors duration-300">
