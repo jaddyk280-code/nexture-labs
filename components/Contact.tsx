@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
     const t = useTranslations('Contact');
@@ -13,40 +14,54 @@ export default function Contact() {
         message: '',
     });
     const [showSuccess, setShowSuccess] = useState(false);
+    const [isSending, setIsSending] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
-        // 이메일 제목과 본문 생성
-        const subject = encodeURIComponent(`프로젝트 문의: ${formState.name}`);
-        const body = encodeURIComponent(
-            `이름: ${formState.name}\n` +
-            `이메일: ${formState.email}\n` +
-            `회사: ${formState.company || '없음'}\n\n` +
-            `메시지:\n${formState.message}`
-        );
-        
-        // mailto 링크 생성
-        const mailtoLink = `mailto:jaddyk280@gmail.com?subject=${subject}&body=${body}`;
-        
-        // 이메일 클라이언트 열기
-        window.location.href = mailtoLink;
-        
-        // 성공 메시지 표시
-        setShowSuccess(true);
-        
-        // 폼 초기화
-        setFormState({
-            name: '',
-            email: '',
-            company: '',
-            message: '',
-        });
-        
-        // 2초 후 메시지 숨기기
-        setTimeout(() => {
-            setShowSuccess(false);
-        }, 2000);
+        setIsSending(true);
+
+        try {
+            // EmailJS 설정 (나중에 실제 값으로 변경 필요)
+            const SERVICE_ID = 'service_xl6q7q5';
+            const TEMPLATE_ID = 'template_qbqr9dw';
+            const PUBLIC_KEY = 'Y0Q_2AawLOs4qTdgR';
+
+            const templateParams = {
+                name: formState.name,
+                email: formState.email,
+                company: formState.company || '없음',
+                message: formState.message,
+                to_email: 'jaddyk280@gmail.com'
+            };
+
+            await emailjs.send(
+                SERVICE_ID,
+                TEMPLATE_ID,
+                templateParams,
+                PUBLIC_KEY
+            );
+
+            // 성공 메시지 표시
+            setShowSuccess(true);
+
+            // 폼 초기화
+            setFormState({
+                name: '',
+                email: '',
+                company: '',
+                message: '',
+            });
+
+            // 2초 후 메시지 숨기기
+            setTimeout(() => {
+                setShowSuccess(false);
+            }, 2000);
+        } catch (error) {
+            console.error('Email 전송 실패:', error);
+            alert('메일 전송에 실패했습니다. 나중에 다시 시도해주세요.');
+        } finally {
+            setIsSending(false);
+        }
     };
 
     return (
@@ -115,7 +130,7 @@ export default function Contact() {
                                     className="flex items-center gap-3 px-6 py-3 bg-gray-900 border border-gray-700 rounded-xl hover:bg-gray-800 transition-all text-white"
                                 >
                                     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M14.54,11.15L6.05,2.66L16.81,8.88L14.54,11.15Z"/>
+                                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M14.54,11.15L6.05,2.66L16.81,8.88L14.54,11.15Z" />
                                     </svg>
                                     <div className="flex flex-col">
                                         <span className="text-[10px] leading-tight text-gray-300">Get it on</span>
@@ -131,7 +146,7 @@ export default function Contact() {
                                     className="flex items-center gap-3 px-6 py-3 bg-gray-900 border border-gray-700 rounded-xl hover:bg-gray-800 transition-all text-white"
                                 >
                                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C1.79 15.25 2.18 5.22 9.5 5.02c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01.01zm-2.87-15.2c.15-1.23 1.17-2.2 2.33-2.38.23 1.67-.64 3.08-1.85 3.94-.28-.38-.6-.75-.97-1.09-.25-.25-.51-.47-.51-.47z"/>
+                                        <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C1.79 15.25 2.18 5.22 9.5 5.02c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01.01zm-2.87-15.2c.15-1.23 1.17-2.2 2.33-2.38.23 1.67-.64 3.08-1.85 3.94-.28-.38-.6-.75-.97-1.09-.25-.25-.51-.47-.51-.47z" />
                                     </svg>
                                     <div className="flex flex-col">
                                         <span className="text-[10px] leading-tight text-gray-300">Download on the</span>
@@ -291,11 +306,12 @@ export default function Contact() {
 
                             <motion.button
                                 type="submit"
-                                whileHover={{ scale: 1.01 }}
-                                whileTap={{ scale: 0.99 }}
-                                className="w-full mt-8 px-8 py-4 bg-[#5D3FD3] text-white font-semibold rounded-xl hover:bg-[#4C1D95] transition-colors duration-200 shadow-lg shadow-indigo-500/25"
+                                disabled={isSending}
+                                whileHover={{ scale: isSending ? 1 : 1.01 }}
+                                whileTap={{ scale: isSending ? 1 : 0.99 }}
+                                className={`w-full mt-8 px-8 py-4 bg-[#5D3FD3] text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/25 ${isSending ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#4C1D95]'}`}
                             >
-                                {t('submit')}
+                                {isSending ? '전송 중...' : t('submit')}
                             </motion.button>
 
                             <p className="text-center text-sm text-gray-500 mt-4">

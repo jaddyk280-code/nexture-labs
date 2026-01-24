@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개인정보 처리방침 - Speech Up</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary-color: #6366f1;
@@ -58,8 +60,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
         }
 
         .header-content {
@@ -375,6 +386,38 @@
         }
 
         /* Responsive */
+        .close-button {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .close-button:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-light);
+            transform: translateY(-2px) rotate(90deg);
+            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.4);
+        }
+
+        .close-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
         @media (max-width: 640px) {
             .header {
                 padding: 40px 16px 60px;
@@ -404,7 +447,15 @@
         }
     </style>
 </head>
+
 <body>
+    <a href="/" class="close-button" title="닫기" onclick="if(history.length > 1) { history.back(); return false; }">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </a>
     <header class="header">
         <div class="header-content">
             <div class="logo">
@@ -441,7 +492,8 @@
                 <div class="subsection">
                     <h3 class="subsection-title">서비스 이용 과정에서 생성되는 정보</h3>
                     <ul class="info-list">
-                        <li><strong>음성 데이터:</strong> 발음 연습 및 AI 대화 기능을 사용할 때 사용자의 음성이 일시적으로 처리됩니다. (서버에 영구 저장되지 않으며, 분석 후 즉시 폐기되거나 사용자 기기 내에서 처리될 수 있습니다.)</li>
+                        <li><strong>음성 데이터:</strong> 발음 연습 및 AI 대화 기능을 사용할 때 사용자의 음성이 일시적으로 처리됩니다. (서버에 영구 저장되지 않으며, 분석
+                            후 즉시 폐기되거나 사용자 기기 내에서 처리될 수 있습니다.)</li>
                         <li><strong>기기 정보:</strong> 기기 종류, OS 버전, 앱 이용 기록</li>
                     </ul>
                 </div>
@@ -538,7 +590,8 @@
                 <h2 class="section-title">개인정보 보호책임자</h2>
             </div>
             <div class="section-content">
-                <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+                <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
+                </p>
 
                 <div class="contact-card">
                     <h4>개인정보 보호책임자</h4>
@@ -564,4 +617,5 @@
         <p>© 2025 Speech Up. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

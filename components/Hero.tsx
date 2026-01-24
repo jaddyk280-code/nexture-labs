@@ -11,7 +11,6 @@ export default function Hero() {
     const vantaEffect = useRef<any>(null);
 
     useEffect(() => {
-        // 클라이언트에서만 마운트
         if (typeof window !== 'undefined') {
             setIsMounted(true);
         }
@@ -20,9 +19,7 @@ export default function Hero() {
     useEffect(() => {
         if (!isMounted || !vantaRef.current) return;
 
-        // Vanta.js 스크립트 동적 로드
         const loadVanta = async () => {
-            // Three.js가 이미 로드되었는지 확인
             if (!(window as any).THREE) {
                 const threeScript = document.createElement('script');
                 threeScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
@@ -36,7 +33,6 @@ export default function Hero() {
         };
 
         const loadVantaEffect = () => {
-            // Vanta 효과 스크립트가 이미 로드되었는지 확인
             if ((window as any).VANTA) {
                 initVanta();
             } else {
@@ -51,13 +47,9 @@ export default function Hero() {
 
         const initVanta = () => {
             if (!vantaRef.current || !(window as any).VANTA) return;
-
-            // 기존 효과가 있으면 제거
             if (vantaEffect.current) {
                 vantaEffect.current.destroy();
             }
-
-            // 제공하신 설정 코드 적용
             vantaEffect.current = (window as any).VANTA.BIRDS({
                 el: vantaRef.current,
                 mouseControls: true,
@@ -67,13 +59,12 @@ export default function Hero() {
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                backgroundColor: 0x87CEEB  // 맑은 하늘색 (Sky Blue)
+                backgroundColor: 0x87CEEB
             });
         };
 
         loadVanta();
 
-        // Cleanup 함수
         return () => {
             if (vantaEffect.current) {
                 vantaEffect.current.destroy();
@@ -81,7 +72,6 @@ export default function Hero() {
         };
     }, [isMounted]);
 
-    // 마운트 전에는 로딩 화면 표시
     if (!isMounted) {
         return (
             <section className="relative h-screen w-full bg-white overflow-hidden">
@@ -92,119 +82,144 @@ export default function Hero() {
         );
     }
 
+    // Modern "Reveal" Animations (No Glitch)
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3, // Slower stagger
+                delayChildren: 0.5    // Longer initial delay
+            }
+        }
+    };
+
+    const titleVariants = {
+        hidden: {
+            opacity: 0,
+            y: 30,
+            filter: "blur(10px)"
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            transition: {
+                duration: 1.8,  // Slower duration
+                ease: [0.22, 1, 0.36, 1] // Custom glossy ease
+            }
+        }
+    };
+
+    const subtitleVariants = {
+        hidden: {
+            opacity: 0,
+            letterSpacing: "-0.02em"
+        },
+        visible: {
+            opacity: 1,
+            letterSpacing: "0em", // Expand to normal
+            transition: {
+                duration: 2.0, // Slower expansion
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const textVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1.5, // Slower fade up
+                ease: "easeOut"
+            }
+        }
+    };
+
     return (
         <section className="relative h-screen w-full bg-white overflow-hidden flex items-start justify-center pt-[calc(5rem+2.586rem)] md:pt-[calc(5rem+4.309rem)] lg:pt-[calc(5rem+5.171rem)]">
-            {/* Vanta.js 애니메이션이 표시될 컨테이너 */}
-            <div 
-                id="vanta-bg" 
+            <div
+                id="vanta-bg"
                 ref={vantaRef}
                 className="absolute inset-0 w-full h-full"
-                style={{ width: '100%', height: '100%' }}
             />
-            
-            {/* 텍스트 콘텐츠 */}
+
             <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 text-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
                     className="space-y-[72px]"
                 >
-                    {/* 큰제목 */}
-                    <motion.h1 
-                        initial={{ opacity: 0, scale: 1 }}
-                        animate={{ opacity: 1, scale: 1.2 }}
-                        transition={{ 
-                            opacity: { duration: 1.5, delay: 0.5 },
-                            scale: { duration: 2.4, delay: 2 }
-                        }}
-                        className="text-[2.069rem] md:text-[3.447rem] lg:text-[4.137rem] font-black text-gray-900 tracking-tight leading-[1.3]"
-                    >
-                        {(() => {
-                            const title = t('title');
-                            // 한국어인 경우 "확장합니다"에서 줄바꿈
-                            if (title.includes('확장합니다')) {
-                                const parts = title.split('확장합니다');
-                                return (
-                                    <>
-                                        {parts[0]}
-                                        <br />
-                                        <span className="inline-block text-gray-900">
-                                            확장합니다
-                                        </span>
-                                    </>
-                                );
-                            }
-                            // 영어인 경우도 처리
-                            if (title.includes('Technology')) {
-                                const parts = title.split('through');
-                                return (
-                                    <>
-                                        {parts[0]}
-                                        <br />
-                                        <span className="inline-block text-gray-900">
-                                            through {parts[1]}
-                                        </span>
-                                    </>
-                                );
-                            }
-                            return title;
-                        })()}
-                    </motion.h1>
-                    
-                    {/* 중제목 */}
-                    <motion.h2 
-                        initial={{ opacity: 0, scale: 1 }}
-                        animate={{ opacity: 1, scale: 1.2 }}
-                        transition={{ 
-                            opacity: { duration: 1.5, delay: 0.5 },
-                            scale: { duration: 2.4, delay: 2 }
-                        }}
+                    {/* 메인 제목 - Smooth Reveal & Blur In */}
+                    <div className="overflow-hidden">
+                        <motion.h1
+                            variants={titleVariants}
+                            className="text-[2.069rem] md:text-[3.447rem] lg:text-[4.137rem] font-black text-gray-900 tracking-tight leading-[1.3]"
+                        >
+                            {(() => {
+                                const title = t('title');
+                                if (title.includes('확장합니다')) {
+                                    const parts = title.split('확장합니다');
+                                    return (
+                                        <>
+                                            {parts[0]}
+                                            <br />
+                                            <span>확장합니다</span>
+                                        </>
+                                    );
+                                }
+                                if (title.includes('Technology')) {
+                                    const parts = title.split('through');
+                                    return (
+                                        <>
+                                            {parts[0]}
+                                            <br />
+                                            <span>through {parts[1]}</span>
+                                        </>
+                                    );
+                                }
+                                return title;
+                            })()}
+                        </motion.h1>
+                    </div>
+
+                    {/* AI Orchestration - Smooth Expand */}
+                    <motion.h2
+                        variants={subtitleVariants}
                         className="text-[2.128rem] md:text-[3.192rem] lg:text-[4.256rem] font-bold text-indigo-600 tracking-tight"
                     >
                         {t('subtitle')}
                     </motion.h2>
-                    
-                    {/* 소제목 */}
+
+                    {/* 서비스 설명 */}
                     <div className="space-y-2 max-w-3xl mx-auto">
-                        <motion.p 
-                            initial={{ opacity: 0, scale: 1 }}
-                            animate={{ opacity: 1, scale: 1.2 }}
-                            transition={{ 
-                                opacity: { duration: 1.5, delay: 0.5 },
-                                scale: { duration: 2.4, delay: 2 }
-                            }}
+                        <motion.p
+                            variants={textVariants}
                             className="text-[1.064rem] md:text-[2.128rem] lg:text-[2.128rem] text-gray-700 font-medium leading-relaxed whitespace-nowrap"
                         >
                             {t('description')} - Nexture Labs
                         </motion.p>
-                        <motion.p 
-                            initial={{ opacity: 0, scale: 1 }}
-                            animate={{ opacity: 1, scale: 1.2 }}
-                            transition={{ 
-                                opacity: { duration: 1.5, delay: 0.5 },
-                                scale: { duration: 2.4, delay: 2 }
-                            }}
+                        <motion.p
+                            variants={textVariants}
                             className="text-[1.064rem] md:text-[2.128rem] lg:text-[2.128rem] text-gray-700 font-medium leading-relaxed whitespace-nowrap"
                         >
                             {t('tagline')}
                         </motion.p>
                     </div>
 
-                    {/* SocialProof - 기술 스택 */}
+                    {/* 기술 스택 */}
                     <div className="mt-12 space-y-4">
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.5 }}
+                            variants={textVariants}
                             className="text-sm font-medium text-gray-500 uppercase tracking-wider"
                         >
                             {t('poweredBy')}
                         </motion.p>
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.7 }}
+                            variants={textVariants}
                             className="flex flex-wrap items-center justify-center gap-6 md:gap-12"
                         >
                             {[
@@ -215,12 +230,9 @@ export default function Hero() {
                                 { name: 'Tailwind', icon: TailwindIcon },
                                 { name: 'Firebase', icon: FirebaseIcon },
                                 { name: 'React Native', icon: ReactIcon },
-                            ].map((tech, index) => (
-                                <motion.div
+                            ].map((tech) => (
+                                <div
                                     key={tech.name}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
                                     className="flex items-center gap-2 group"
                                 >
                                     <div className="w-8 h-8 flex items-center justify-center text-gray-400 group-hover:text-gray-600 transition-colors duration-300">
@@ -229,7 +241,7 @@ export default function Hero() {
                                     <span className="text-xs md:text-sm font-medium text-gray-400 group-hover:text-gray-600 transition-colors duration-300">
                                         {tech.name}
                                     </span>
-                                </motion.div>
+                                </div>
                             ))}
                         </motion.div>
                     </div>
@@ -239,7 +251,6 @@ export default function Hero() {
     );
 }
 
-// Icon Components
 function NextjsIcon() {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
@@ -259,7 +270,7 @@ function OpenAIIcon() {
 function GeminiIcon() {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
     );
 }

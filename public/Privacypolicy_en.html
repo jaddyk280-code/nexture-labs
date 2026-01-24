@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,8 +59,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
         }
 
         .header-content {
@@ -375,6 +385,38 @@
         }
 
         /* Responsive */
+        .close-button {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .close-button:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-light);
+            transform: translateY(-2px) rotate(90deg);
+            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.4);
+        }
+
+        .close-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
         @media (max-width: 640px) {
             .header {
                 padding: 40px 16px 60px;
@@ -404,7 +446,15 @@
         }
     </style>
 </head>
+
 <body>
+    <a href="/" class="close-button" title="Close" onclick="if(history.length > 1) { history.back(); return false; }">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </a>
     <header class="header">
         <div class="header-content">
             <div class="logo">
@@ -428,20 +478,24 @@
             </div>
             <div class="section-content">
                 <p>We collect only the minimum amount of personal information necessary to provide our services.</p>
-                
+
                 <div class="subsection">
                     <h3 class="subsection-title">Information Collected via Social Login</h3>
-                    <p>The App supports social logins through Kakao, Naver, Google, Facebook, and Apple. We may collect the following:</p>
+                    <p>The App supports social logins through Kakao, Naver, Google, Facebook, and Apple. We may collect
+                        the following:</p>
                     <ul class="info-list">
                         <li><strong>Basic Profile Information:</strong> Name (nickname), Email address</li>
-                        <li><strong>Unique Identifier (UID):</strong> A unique identifier issued by the social login provider</li>
+                        <li><strong>Unique Identifier (UID):</strong> A unique identifier issued by the social login
+                            provider</li>
                     </ul>
                 </div>
 
                 <div class="subsection">
                     <h3 class="subsection-title">Information Generated During Service Use</h3>
                     <ul class="info-list">
-                        <li><strong>Voice Data:</strong> Your voice is processed temporarily for pronunciation practice and AI conversation features. (It is not permanently stored on our servers and is deleted after analysis or processed locally.)</li>
+                        <li><strong>Voice Data:</strong> Your voice is processed temporarily for pronunciation practice
+                            and AI conversation features. (It is not permanently stored on our servers and is deleted
+                            after analysis or processed locally.)</li>
                         <li><strong>Device Information:</strong> Device type, OS version, and app usage logs</li>
                     </ul>
                 </div>
@@ -457,9 +511,12 @@
             <div class="section-content">
                 <p>The collected information is used strictly for the following purposes:</p>
                 <ol class="numbered-list">
-                    <li><strong>Member Registration and Management:</strong> Identity verification, prevention of unauthorized use, and confirmation of registration intent</li>
-                    <li><strong>Service Provision:</strong> Providing AI-based pronunciation correction, conversation practice features, and saving learning progress</li>
-                    <li><strong>Service Improvement:</strong> Bug fixes, feature enhancements, and usage statistics analysis</li>
+                    <li><strong>Member Registration and Management:</strong> Identity verification, prevention of
+                        unauthorized use, and confirmation of registration intent</li>
+                    <li><strong>Service Provision:</strong> Providing AI-based pronunciation correction, conversation
+                        practice features, and saving learning progress</li>
+                    <li><strong>Service Improvement:</strong> Bug fixes, feature enhancements, and usage statistics
+                        analysis</li>
                 </ol>
             </div>
         </section>
@@ -472,7 +529,8 @@
             </div>
             <div class="section-content">
                 <p>In principle, we do not provide your personal information to third parties.</p>
-                <p>Exceptions are made only when required by law or when requested by investigative agencies in accordance with legal procedures and methods.</p>
+                <p>Exceptions are made only when required by law or when requested by investigative agencies in
+                    accordance with legal procedures and methods.</p>
             </div>
         </section>
 
@@ -483,15 +541,18 @@
                 <h2 class="section-title">Retention and Destruction of Personal Information</h2>
             </div>
             <div class="section-content">
-                <p>Once the purpose of collecting and using personal information is achieved, the information is destroyed without delay.</p>
-                <p>However, if retention is required by law, we will store the data for the period prescribed by relevant regulations.</p>
-                
+                <p>Once the purpose of collecting and using personal information is achieved, the information is
+                    destroyed without delay.</p>
+                <p>However, if retention is required by law, we will store the data for the period prescribed by
+                    relevant regulations.</p>
+
                 <div class="info-box">
                     <div class="info-box-title">
                         <span>📌</span>
                         <span>Upon Account Deletion</span>
                     </div>
-                    <p>Immediate destruction (except for minimal data kept for a certain period to prevent fraudulent use)</p>
+                    <p>Immediate destruction (except for minimal data kept for a certain period to prevent fraudulent
+                        use)</p>
                 </div>
             </div>
         </section>
@@ -503,8 +564,9 @@
                 <h2 class="section-title">User Data Deletion Instructions</h2>
             </div>
             <div class="section-content">
-                <p>Users can request the deletion of their personal information at any time. Speech Up supports data deletion (account withdrawal) through the following methods:</p>
-                
+                <p>Users can request the deletion of their personal information at any time. Speech Up supports data
+                    deletion (account withdrawal) through the following methods:</p>
+
                 <div class="subsection">
                     <h3 class="subsection-title">Deletion via the App</h3>
                     <div class="delete-steps">
@@ -512,7 +574,8 @@
                             <li>Launch and log in to the <strong>Speech Up</strong> app</li>
                             <li>Go to the <strong>Settings</strong> or <strong>MY</strong> menu</li>
                             <li>Click <strong>Delete Account</strong> or <strong>Withdraw Membership</strong></li>
-                            <li>Upon confirmation in the pop-up, your account and all linked data will be permanently deleted immediately</li>
+                            <li>Upon confirmation in the pop-up, your account and all linked data will be permanently
+                                deleted immediately</li>
                         </ol>
                     </div>
                 </div>
@@ -520,13 +583,15 @@
                 <div class="subsection">
                     <h3 class="subsection-title">Deletion via Email Request</h3>
                     <p>If you cannot access the app, you may send a deletion request to the below email:</p>
-                    
+
                     <div class="info-box">
                         <p><strong>Email:</strong> <a href="mailto:jaddyk280@gmail.com">jaddyk280@gmail.com</a></p>
                         <p><strong>Subject:</strong> Request for Speech Up Account Deletion</p>
-                        <p><strong>Required Info:</strong> Registered email address and login method (e.g., Apple/Facebook)</p>
+                        <p><strong>Required Info:</strong> Registered email address and login method (e.g.,
+                            Apple/Facebook)</p>
                     </div>
-                    <p style="margin-top: 16px;">We will notify you of the result via email after processing your request.</p>
+                    <p style="margin-top: 16px;">We will notify you of the result via email after processing your
+                        request.</p>
                 </div>
             </div>
         </section>
@@ -539,7 +604,7 @@
             </div>
             <div class="section-content">
                 <p>To protect your personal information and handle complaints, we have designated a Privacy Officer:</p>
-                
+
                 <div class="contact-card">
                     <h4>Privacy Officer</h4>
                     <div class="contact-info">
@@ -564,4 +629,5 @@
         <p>© 2025 Speech Up. All rights reserved.</p>
     </footer>
 </body>
+
 </html>
