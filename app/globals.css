@@ -59,3 +59,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--foreground-muted);
 }
+
+/* Hide Next.js portal element */
+nextjs-portal {
+  display: none !important;
+}

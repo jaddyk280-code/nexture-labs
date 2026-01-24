@@ -75,7 +75,14 @@ export default function Philosophy() {
 
                         <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-8">
                             {t('quote1')}{' '}
-                            <span className="text-[#5D3FD3]">{t('quote2')}</span>
+                            <span className="text-[#5D3FD3]">{t('quote2').replace(/\.$/, '')}</span>
+                            <svg
+                                className="inline-block w-16 h-16 text-indigo-100 ml-2 -mb-2"
+                                fill="currentColor"
+                                viewBox="0 0 32 32"
+                            >
+                                <path d="M22 24c3.3 0 6-2.7 6-6V8h-10v10h8c0 2.2-1.8 4-4 4v2zm-14 0c3.3 0 6-2.7 6-6V8H4v10h8c0 2.2-1.8 4-4 4v2z" />
+                            </svg>
                         </p>
                     </motion.blockquote>
 
@@ -86,7 +93,20 @@ export default function Philosophy() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="text-lg md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto"
                     >
-                        {t('description')}
+                        {(() => {
+                            const description = t('description');
+                            if (description.includes('집중합니다.')) {
+                                const parts = description.split('집중합니다.');
+                                return (
+                                    <>
+                                        {parts[0]}집중합니다.
+                                        <br />
+                                        {parts[1]}
+                                    </>
+                                );
+                            }
+                            return description;
+                        })()}
                     </motion.p>
 
                     {/* Values */}

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보 처리방침 - Speech Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --bg-color: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .effective-date {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 8px 20px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 100px;
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px 80px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.25);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .section-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Subsection */
+        .subsection {
+            margin-top: 24px;
+        }
+
+        .subsection-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .subsection-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        /* List Styles */
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .info-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .info-list li strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Numbered List */
+        .numbered-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: item;
+        }
+
+        .numbered-list li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .numbered-list li::before {
+            counter-increment: item;
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .info-box-title {
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+        }
+
+        .contact-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            color: var(--text-secondary);
+        }
+
+        .contact-item strong {
+            color: var(--text-primary);
+        }
+
+        .contact-item a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Delete Steps */
+        .delete-steps {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .delete-steps .numbered-list li::before {
+            background: rgba(139, 92, 246, 0.3);
+            color: #a78bfa;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header {
+                padding: 40px 16px 60px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 40px 16px 60px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .section-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🎤</div>
+                <span class="logo-text">Speech Up</span>
+            </div>
+            <h1>개인정보 처리방침</h1>
+            <p class="header-subtitle">
+                Speech Up은 사용자의 개인정보를 소중히 다루며, 관련 법령을 준수합니다.
+            </p>
+            <span class="effective-date">시행일: 2025년 12월 1일</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Section 1 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">수집하는 개인정보 항목</h2>
+            </div>
+            <div class="section-content">
+                <p>회사는 서비스 제공을 위해 최소한의 개인정보만을 수집합니다.</p>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">소셜 로그인 시 수집되는 정보</h3>
+                    <p>앱은 Firebase Authentication을 통해 카카오, 네이버, 구글, 페이스북, 애플 로그인을 지원하며, 이 과정에서 다음 정보를 수집할 수 있습니다.</p>
+                    <ul class="info-list">
+                        <li><strong>기본 프로필 정보:</strong> 이름(닉네임), 이메일 주소</li>
+                        <li><strong>식별자(UID):</strong> 소셜 로그인 제공업체에서 발급한 고유 식별자</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">서비스 이용 과정에서 생성되는 정보</h3>
+                    <ul class="info-list">
+                        <li><strong>음성 데이터:</strong> 발음 연습 및 AI 대화 기능을 사용할 때 사용자의 음성이 일시적으로 처리됩니다. (서버에 영구 저장되지 않으며, 분석 후 즉시 폐기되거나 사용자 기기 내에서 처리될 수 있습니다.)</li>
+                        <li><strong>기기 정보:</strong> 기기 종류, OS 버전, 앱 이용 기록</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">개인정보의 수집 및 이용 목적</h2>
+            </div>
+            <div class="section-content">
+                <p>수집된 정보는 다음의 목적으로만 사용됩니다.</p>
+                <ol class="numbered-list">
+                    <li><strong>회원 가입 및 관리:</strong> 본인 확인, 개인 식별, 부정 이용 방지, 가입 의사 확인</li>
+                    <li><strong>서비스 제공:</strong> AI 기반 발음 교정, 회화 연습 기능 제공, 학습 기록 저장</li>
+                    <li><strong>서비스 개선:</strong> 버그 수정, 기능 개선을 위한 사용 통계 분석</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">개인정보의 제3자 제공</h2>
+            </div>
+            <div class="section-content">
+                <p>회사는 원칙적으로 사용자의 개인정보를 외부에 제공하지 않습니다.</p>
+                <p>단, 법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우는 예외로 합니다.</p>
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">개인정보의 보유 및 이용 기간</h2>
+            </div>
+            <div class="section-content">
+                <p>원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.</p>
+                <p>단, 관계 법령의 규정에 의하여 보존할 필요가 있는 경우 법령에서 정한 기간 동안 보관합니다.</p>
+
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <span>📌</span>
+                        <span>회원 탈퇴 시</span>
+                    </div>
+                    <p>즉시 파기 (단, 부정이용 방지를 위해 일정 기간 보관할 수 있음)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2 class="section-title">사용자 데이터 삭제 방법</h2>
+            </div>
+            <div class="section-content">
+                <p>사용자는 언제든지 자신의 개인정보 삭제를 요청할 수 있습니다. Speech Up은 다음과 같은 방법으로 데이터 삭제(회원 탈퇴)를 지원합니다.</p>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">앱 내에서 삭제 요청</h3>
+                    <div class="delete-steps">
+                        <ol class="numbered-list">
+                            <li>Speech Up 앱 실행 및 로그인</li>
+                            <li><strong>설정(Settings)</strong> 또는 <strong>마이(MY)</strong> 메뉴로 이동</li>
+                            <li><strong>계정 삭제(Delete Account)</strong> 또는 <strong>회원 탈퇴</strong> 버튼 클릭</li>
+                            <li>확인 팝업에서 승인을 하면, 계정 및 연동된 모든 데이터가 즉시 영구 삭제됩니다</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">이메일을 통한 삭제 요청</h3>
+                    <p>앱 접속이 불가능한 경우, 아래 이메일로 삭제 요청을 보낼 수 있습니다.</p>
+
+                    <div class="info-box">
+                        <p><strong>담당자 이메일:</strong> <a href="mailto:jaddyk280@gmail.com">jaddyk280@gmail.com</a></p>
+                        <p><strong>메일 제목:</strong> Speech Up 계정 삭제 요청</p>
+                        <p><strong>필수 기재 사항:</strong> 가입한 이메일 주소 및 로그인 방식(Apple/Facebook 등)</p>
+                    </div>
+                    <p style="margin-top: 16px;">요청을 받은 후 처리 결과는 해당 이메일로 회신해 드립니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <h2 class="section-title">개인정보 보호책임자</h2>
+            </div>
+            <div class="section-content">
+                <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+
+                <div class="contact-card">
+                    <h4>개인정보 보호책임자</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>👤</span>
+                            <strong>이름:</strong>
+                            <span>Jaddy K</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>✉️</span>
+                            <strong>연락처:</strong>
+                            <a href="mailto:jaddyk280@gmail.com">jaddyk280@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-logo">Speech Up</p>
+        <p>© 2025 Speech Up. All rights reserved.</p>
+    </footer>
+</body>
+</html>

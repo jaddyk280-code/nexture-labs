@@ -93,7 +93,7 @@ export default function Hero() {
     }
 
     return (
-        <section className="relative h-screen w-full bg-white overflow-hidden flex items-start justify-center pt-[calc(5rem+5.172rem)] md:pt-[calc(5rem+8.618rem)] lg:pt-[calc(5rem+10.342rem)]">
+        <section className="relative h-screen w-full bg-white overflow-hidden flex items-start justify-center pt-[calc(5rem+2.586rem)] md:pt-[calc(5rem+4.309rem)] lg:pt-[calc(5rem+5.171rem)]">
             {/* Vanta.js 애니메이션이 표시될 컨테이너 */}
             <div 
                 id="vanta-bg" 
@@ -118,7 +118,7 @@ export default function Hero() {
                             opacity: { duration: 1.5, delay: 0.5 },
                             scale: { duration: 2.4, delay: 2 }
                         }}
-                        className="text-[2.586rem] md:text-[4.309rem] lg:text-[5.171rem] font-black text-gray-900 tracking-tight leading-[1.3]"
+                        className="text-[2.069rem] md:text-[3.447rem] lg:text-[4.137rem] font-black text-gray-900 tracking-tight leading-[1.3]"
                     >
                         {(() => {
                             const title = t('title');
